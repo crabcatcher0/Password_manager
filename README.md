@@ -11,7 +11,7 @@ To install:
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/crabcatcher0/Password_manager
-   cd Password-Manager
+   cd password-manager
    
 2. **Install dependency**:
    ```bash
