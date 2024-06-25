@@ -21,3 +21,10 @@ To install:
    ```bash
    python main.py
 
+## Usage
+## Commands
+- **Generate Password (G)**: Generates a random password.
+- **Manage Account (M)**: Allows you to manage your specific accounts and passwords.
+- **View Account (S)**: Displays information about your account.
+- **Check Password Strength (C)**: Evaluates the strength of a password.
+- **Quit (Q)**: Exits the application.
