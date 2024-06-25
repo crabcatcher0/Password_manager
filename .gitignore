@@ -1,0 +1,41 @@
+# Ignore compiled Python files
+*.pyc
+*.pyo
+__pycache__
+
+# Ignore Python cache files
+*.cache
+
+# Ignore environment-specific settings
+.env
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and other temporary files
+*.log
+*.bak
+*.swp
+*.tmp
+
+# Ignore local development files
+venv/
+*.env
+venv
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore pytest cache and coverage
+.coverage
+pytest_cache/
+
+# Ignore package installation files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Ignore compiled Python modules
+*.pyc
+*.pyo
