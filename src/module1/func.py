@@ -1,5 +1,5 @@
 ##password generator
-from colorama import Fore, Back, Style
+from colorama import Fore, Style
 import random
 import re
 import os
@@ -65,7 +65,7 @@ def password_check(input_pass):
 def show_my_password():
 
     if not os.path.exists("credential.txt"):
-        print(f"{Fore.RED}{Style.BRIGHT}✖Please generate and store your detail.{Style.RESET_ALL}")
+        print(f"{Fore.RED}{Style.BRIGHT}✖ Please generate and store your detail.{Style.RESET_ALL}")
     else:
         with open("credential.txt", 'r') as file:
             file = file.read()
