@@ -19,7 +19,8 @@ To install:
    
 3. **Run**:
    ```bash
-   python main.py
+   cd src
+   python3 main.py
 
 ## Usage
 ## Commands

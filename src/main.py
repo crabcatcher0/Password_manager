@@ -1,4 +1,4 @@
-import func
+from module1 import func
 from colorama import Fore, Back, Style
 
 
