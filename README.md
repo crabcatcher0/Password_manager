@@ -1,12 +1,21 @@
 # Password Manager
+CLI based application. Integrated web-based feature for data integrity, User can directly control from command line.
+
 ## Features
+
+### Online:
+- **Register**: User can create a account and signin.
+- **Browse Account**: Can view account and data.
+
+### Offline:
 - **Password Generation**: Generate strong passwords with customizable length requirements.
 - **Account Management**: Store and manage passwords for specific accounts securely.
 - **Password Strength Check**: Evaluate password strength based length, character types, and randomness.
 
 ## Installation
 
-To install:
+### To install:
+Start XAMPP and create a database.
 
 1. **Clone the repository**:
    ```bash
@@ -24,6 +33,12 @@ To install:
 
 ## Usage
 ## Commands
+### Online:
+- **Register (A)**: Signup
+- **Login (L)**: Login
+- **Logout (X)**: Logout
+
+### Offline 
 - **Generate Password (G)**: Generates a random password.
 - **Manage Account (M)**: Allows you to manage your specific accounts and passwords.
 - **View Account (S)**: Displays information about your account.

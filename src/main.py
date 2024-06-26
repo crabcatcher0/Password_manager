@@ -88,7 +88,7 @@ while True:
             f"{Fore.CYAN}{Style.BRIGHT}Options:\n"
             "'V' to view profile information\n"
             "'S' to view status\n"
-            "'L' to logout\n"
+            "'X' to logout\n"
             f"Choose from options:{Style.RESET_ALL} "
         ).strip().lower()
 
@@ -96,7 +96,7 @@ while True:
             process.profile_info(session_token)
           
 
-        elif user_input == 'l': #logout
+        elif user_input == 'x': #logout
             process.logout(session_token)  
             logged_in = False
             username = ''
