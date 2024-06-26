@@ -36,6 +36,9 @@ Start XAMPP and create a database.
 ### Online:
 - **Register (A)**: Signup
 - **Login (L)**: Login
+- **View Account Info (V)**: Display profile's information
+- **Add Data to Vault (S)**: Add data to database
+- **Open Vault (W)**: Displays the vault's data
 - **Logout (X)**: Logout
 
 ### Offline 
