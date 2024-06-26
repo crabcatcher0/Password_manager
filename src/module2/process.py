@@ -3,6 +3,8 @@ import pymysql
 import bcrypt
 import pymysql.cursors
 import secrets
+from colorama import Fore, Style
+
 
 sessions = {}
 
@@ -13,24 +15,32 @@ def hassed_password(password):
 
 
 
-def user_register(first_name: str, last_name: str, username, password):
+def user_register(first_name: str, last_name: str, username, password): #registration
+    connection = None
     try:
+        if not (first_name and last_name and username and password):
+            raise ValueError(f"{Fore.RED}All field must be filled.{Style.RESET_ALL}")
+        
         connection = conn.connect_me()
         with connection.cursor() as cursor:
             hassed = hassed_password(password)
             sql = "INSERT INTO user(first_name, last_name, username, password) VALUES (%s, %s, %s, %s)"
-            value = first_name, last_name, username, hassed
+            value = (first_name, last_name, username, hassed)
             cursor.execute(sql, value)
             connection.commit()
-            print("Registration success!")
+            return f"{Fore.GREEN}{Style.BRIGHT}Registration success!{Style.RESET_ALL}"
 
     except pymysql.Error as e:
-        print(f"Error: {e}")
+        return f"{Fore.RED}Error: {e}{Style.RESET_ALL}"
+
+    except ValueError as ve:
+        return f"{Fore.RED}Error: {ve}{Style.RESET_ALL}"
 
     finally:
         if connection:
             connection.close()
-
+        
+    
 
 def login(username, password):
     try:
@@ -75,7 +85,6 @@ def logout(session_token):
 
 def profile_info(session_token):
     connection = None
-    
     try:
         if session_token in sessions:
             user_id = sessions[session_token]
@@ -86,13 +95,16 @@ def profile_info(session_token):
                 cursor.execute(sql, (user_id,))
                 result = cursor.fetchone()
 
-                # print(f"Debug - session_token: {session_token}, user_id: {user_id}, result: {result}")
-
                 if result:
                     first_name, last_name, username = result
-                    print("Profile Information:")
-                    print(f"Username: {result[username]}")
-                    print(f"Name: {result[first_name]} {result[last_name]}")
+                    print("*" * 40)  
+                    print("*" + " " * 38 + "*")  
+                    print(f"*{'Profile Information:':^38}*") 
+                    print("*" + " " * 38 + "*")  
+                    print(f"* Username: {result[username]:<30} *")  
+                    print(f"* Name: {result[first_name]} {result[last_name]:<25} *") 
+                    print("*" + " " * 38 + "*")  
+                    print("*" * 40)  
                 else:
                     print(f"No user found with ID: {user_id}") 
         else:
@@ -105,5 +117,39 @@ def profile_info(session_token):
         if connection:
             connection.close()
 
+
+def add_data(session_token, site_name, password, comment):
+    connection = None
+
+    try:
+        if session_token in sessions:
+            user_id = sessions[session_token]
+
+            if not (user_id and site_name and password and comment):
+                raise ValueError("All fields are required.")
+
+            connection = conn.connect_me()
+            with connection.cursor() as cursor:
+                sql = "INSERT INTO data(user_id, site_name, password, comment) VALUES (%s, %s, %s, %s)"
+                values = (user_id, site_name, password, comment)
+                cursor.execute(sql, values)
+                connection.commit()
+
+            return f"{Fore.GREEN}{Style.BRIGHT}Successfully Added!{Style.RESET_ALL}"
+
+        else:
+            return "Session not found or expired. Please login again."
+
+    except pymysql.Error as e:
+        return f"Database Error: {e}"
+
+    except ValueError as ve:
+        return f"Error: {ve}"
+
+    finally:
+        if connection:
+            connection.close()
+
+            
 
                           

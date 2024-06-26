@@ -53,22 +53,22 @@ while True:
 
 
         elif user_input == 'a': #register
-            first_name = input("Enter your first name: ")
-            last_name = input("Enter your last name: ")
-            username = input("Create username: ")
-            password = getpass.getpass("Create password: ")
+            first_name = input("Enter your first name: ").strip()
+            last_name = input("Enter your last name: ").strip()
+            username = input("Create username: ").strip()
+            password = getpass.getpass("Create password: ").strip()
             register = process.user_register(first_name, last_name, username, password)
             print(register)
 
 
         elif user_input == 'l': #login
             username = input("Enter username: ")
-            password = input("Enter password: ")
+            password = getpass.getpass("Enter password: ")
             session_token = process.login(username, password)  #getting session token
 
             if session_token:
                 logged_in = True
-                print(f"{Fore.GREEN}Login successful!{Style.RESET_ALL}")
+                print(f"{Fore.GREEN}✔ Login successful!{Style.RESET_ALL}")
 
             else:
                 print(f"{Fore.RED}Login failed. Please try again.{Style.RESET_ALL}")
@@ -77,33 +77,41 @@ while True:
             break
 
         else:
-            print(f"{Fore.RED}{Style.BRIGHT}✖ Invalid input please choose from the options.{Style.RESET_ALL}")
+            print(f"{Fore.RED}{Style.BRIGHT}Invalid input please choose from the options.{Style.RESET_ALL}")
 
 
     else:  # if user is logged in
 
-        print(f"{Fore.GREEN}{Style.BRIGHT}Status 200 Ok! Active: {username}{Style.RESET_ALL}")
+        print(f"{Fore.GREEN}{Style.BRIGHT}✔ Status 200 Ok! Active: {username}{Style.RESET_ALL}")
 
         user_input = input(
             f"{Fore.CYAN}{Style.BRIGHT}Options:\n"
             "'V' to view profile information\n"
-            "'S' to view status\n"
+            "'S' Add data to Vault\n"
             "'X' to logout\n"
             f"Choose from options:{Style.RESET_ALL} "
         ).strip().lower()
 
-        if user_input == 'v':
+
+        if user_input == 'v': #view info
             process.profile_info(session_token)
-          
+        
+
+        elif user_input == 's': #add data
+            site_name = input("Enter site name or URL: ")
+            password = input("Enter the password you want to store: ")
+            comment = input("Reminders (required): ")
+            process.add_data(session_token, site_name, password, comment)
+            print(f"{Fore.GREEN}{Style.BRIGHT}✔ Data added Successfully!{Style.RESET_ALL}")
 
         elif user_input == 'x': #logout
             process.logout(session_token)  
             logged_in = False
             username = ''
             session_token = ''  
-            print(f"{Fore.GREEN}Logged out successfully.{Style.RESET_ALL}")
+            print(f"{Fore.GREEN}✔ Logged out successfully.{Style.RESET_ALL}")
 
         else:
-            print(f"{Fore.RED}{Style.BRIGHT}✖ Invalid input. Please choose from the options.{Style.RESET_ALL}")
+            print(f"{Fore.RED}{Style.BRIGHT}Invalid input. Please choose from the options.{Style.RESET_ALL}")
 
 print("Exiting Password Manager. Goodbye!")
