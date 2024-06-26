@@ -2,6 +2,10 @@ from module1 import func
 from module2 import process
 import getpass
 from colorama import Fore, Style
+import pyfiglet
+
+ascii_art = pyfiglet.figlet_format("CrabCatcher0")
+print(Fore.YELLOW + ascii_art + Style.RESET_ALL)
 
 print("********* Welcome to Password Manager *********")
 password = ''
@@ -14,8 +18,11 @@ while True:
     if not logged_in:
         user_input = input(
             f"{Fore.BLUE}{Style.BRIGHT}Options: \n"
-            "'A' Register (Web based.)\n"
+            "Web-Based (Requires Database):\n"
+            "'A' Register\n"
             "'L' to login\n"
+            "\n"
+            "Offline:\n"
             "'G' to generate random password\n"
             "'M' to manage your account and password (Password must be generated first)\n"
             "'S' to view your account.\n"
@@ -85,9 +92,10 @@ while True:
         print(f"{Fore.GREEN}{Style.BRIGHT}✔ Status 200 Ok! Active: {username}{Style.RESET_ALL}")
 
         user_input = input(
-            f"{Fore.CYAN}{Style.BRIGHT}Options:\n"
+            f"{Fore.CYAN}{Style.BRIGHT}Available Options:\n"
             "'V' to view profile information\n"
             "'S' Add data to Vault\n"
+            "'W' open Vault\n"
             "'X' to logout\n"
             f"Choose from options:{Style.RESET_ALL} "
         ).strip().lower()
@@ -98,11 +106,20 @@ while True:
         
 
         elif user_input == 's': #add data
-            site_name = input("Enter site name or URL: ")
-            password = input("Enter the password you want to store: ")
-            comment = input("Reminders (required): ")
-            process.add_data(session_token, site_name, password, comment)
-            print(f"{Fore.GREEN}{Style.BRIGHT}✔ Data added Successfully!{Style.RESET_ALL}")
+            site_name = input("Enter site name or URL: ").strip()
+            password = input("Enter the password you want to store: ").strip()
+            comment = input("Reminders (required): ").strip()
+            success = process.add_data(session_token, site_name, password, comment)
+
+            if success:
+                print(f"{Fore.GREEN}{Style.BRIGHT}✔ Data added Successfully!{Style.RESET_ALL}")
+            else:
+                print(f"{Fore.RED}{Style.BRIGHT}Failed to add data. Please try again.{Style.RESET_ALL}")
+
+
+        elif user_input == 'w': #open vault
+            process.open_vault(session_token)
+
 
         elif user_input == 'x': #logout
             process.logout(session_token)  
