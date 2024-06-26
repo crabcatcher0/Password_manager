@@ -134,11 +134,7 @@ def add_data(session_token, site_name, password, comment):
                 values = (user_id, site_name, password, comment)
                 cursor.execute(sql, values)
                 connection.commit()
-
-            return f"{Fore.GREEN}{Style.BRIGHT}Successfully Added!{Style.RESET_ALL}"
-
-        else:
-            return "Session not found or expired. Please login again."
+                return True
 
     except pymysql.Error as e:
         return f"Database Error: {e}"
@@ -149,7 +145,47 @@ def add_data(session_token, site_name, password, comment):
     finally:
         if connection:
             connection.close()
+    
+    return False
 
             
+def open_vault(session_token):
+    connection = None
+    try:
+        if session_token in sessions:
+            user_id = sessions[session_token]
 
-                          
+            connection = conn.connect_me()
+            with connection.cursor() as cursor:
+                sql = "SELECT site_name, password, comment FROM data WHERE user_id = %s"
+                cursor.execute(sql, (user_id,))
+                data_results = cursor.fetchall()
+
+                if data_results:
+                    print("\n* Available Data:")
+                    for idx, data in enumerate(data_results, start=1):
+                        site_name = data['site_name']  
+                        password = data['password']    
+                        comment = data['comment']     
+
+                        print("*" + " " * 38 + "*")
+                        print(f"* Site {idx}:")
+                        print(f"*   Site Name: {site_name:<25} *")
+                        print(f"*   Password: {password:<28} *")
+                        print(f"*   Comment: {comment:<28} *")
+                        print("*" + " " * 38 + "*")
+
+                    print("*" * 40)
+                else:
+                    print("* No data stored yet." + " " * 16 + "*")
+
+        else:
+            print("Session Expired. Please login again.")
+
+    except pymysql.Error as e:
+        print(f"Database Error: {e}")
+
+    finally:
+        if connection:
+            connection.close()
+
