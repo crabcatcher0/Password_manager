@@ -5,9 +5,25 @@
 
 <div class="hero-container">
     <h1 class="hero-title">Welcome To Your Personal Vault.</h1>
-    <div class="hero-button">
-        <button class="button-one" href="#">LOGIN</button>
-        <button class="button-two" href="#">SIGNUP</button>
-    </div>
 </div>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <span class="terminal-button close"></span>
+                <span class="terminal-button minimize"></span>
+                <span class="terminal-button maximize"></span>
+            </div>
+            <div class="terminal-title">Generate Password</div>
+        </div>
+        <div class="terminal-body">
+            <p><span class="command">root@User :~$ <span>{% if data %}{{ data }}{% endif %}</span><span class="blink"> _</span></span></p>
+        </div>
+            <a class="clear-button" href="{% url 'home' %}">Clear</a>
+    </div>
+    <div class="generate-button">
+        <form action="{% url 'generate_pass' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="button-one">GENERATE</button>
+        </form>
+    </div>
 {% endblock %}

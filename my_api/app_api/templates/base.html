@@ -14,12 +14,16 @@
         <img src="{% static 'img/logo.png' %}" alt="MyVault Logo">
     </div>
     <div class="navlinks">
-        <a href="#home">Home</a>
+        <a href="{% url 'home' %}">Home</a>
         <a href="#about">About</a>
-        <a href="#services">Services</a>
+        {% if user.is_authenticated %}
+        <a href="#services">Account</a>
+        {% endif %}
         <a href="#contact">Contact</a>
     </div>
-    <button class="login-button" href="#">Signup</button>
+    <button class="login-button">
+        <a href="{% url 'register' %}">Signup</a>
+    </button>
 </nav>
 {% block content %}
 {% endblock %}

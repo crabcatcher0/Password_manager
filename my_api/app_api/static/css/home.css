@@ -4,20 +4,95 @@
 
 .hero-title {
     font-size: 2rem;
-    margin-bottom: 20px;
     color: rgb(227 227 227);
     text-align: center;
-    margin-top: 90px;
+    margin-top: 70px;
 }
 
-.hero-button{
+.terminal-container {
+    width: 600px; 
+    margin: 50px auto; 
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: #2b2b2b;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
+    overflow: hidden;
+}
+
+.terminal-header {
+    background-color: #1f1f1f;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+}
+
+.terminal-buttons {
+    flex: 1;
+}
+
+.terminal-button {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.close {
+    background-color: #ff5f56;
+}
+
+.minimize {
+    background-color: #ffbd2e;
+}
+
+.maximize {
+    background-color: #27c93f;
+}
+
+.terminal-title {
+    color: rgb(227 227 227);
+    font-weight: bold;
+}
+
+.terminal-body {
+    padding: 20px;
+    line-height: 1.5;
+}
+
+.command {
+    color: #00f7ff;
+    font-weight: bold;
+}
+
+.blink {
+    animation: blink-animation 1s step-end infinite;
+}
+
+@keyframes blink-animation {
+    50% {
+        opacity: 0;
+    }
+}
+
+.clear-button{
+    color: rgb(133, 127, 127);
+    text-decoration: none;
+    font-size: 0.8rem;
+    border: 1px solid  #1f1f1f;
+    padding: 5px 8px;
+    
+}
+
+.generate-button{
     text-align: center;
 }
 
-.hero-button 
 .button-one {
-    color: white;
-    background-color: #006ea5;
+    color: rgb(245, 245, 245);
+    background-color: #003349;
     border: none ;
     padding: 15px 20px;
     font-weight: bold;
@@ -25,24 +100,7 @@
     border-radius: 10px;
 }
 
-.hero-button .button-one:hover{
-    color: rgb(189, 189, 189);
-    background-color: #06557c;
-}
-
-.hero-button
-.button-two {
-    color: white;
-    background-color: green;
-    border: none;
-    padding: 15px 20px;
-    cursor: pointer;
-    margin-left: 8px;
-    font-weight: bold;
-    border-radius: 10px;
-}
-
-.hero-button .button-two:hover{
-    color: rgb(189, 189, 189);
-    background-color: rgb(2, 82, 2);
+.button-one:hover {
+    color: rgb(190, 190, 190);
+    background-color: #004b6e;
 }
