@@ -1,0 +1,13 @@
+{% load static %}
+{% include "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+<div class="hero-container">
+    <h1 class="hero-title">Welcome To Your Personal Vault.</h1>
+    <div class="hero-button">
+        <button class="button-one" href="#">LOGIN</button>
+        <button class="button-two" href="#">SIGNUP</button>
+    </div>
+</div>
+{% endblock %}
