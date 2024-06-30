@@ -1,4 +1,5 @@
 # Create your views here.
+from django.shortcuts import redirect, render
 from django.shortcuts import HttpResponse
 from .serializer import DataSerializer
 from .models import UserData
@@ -6,6 +7,9 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
+
+def home(request):
+    return render(request, 'home.html')
 
 @api_view(['GET', 'POST'])
 def my_data(request):

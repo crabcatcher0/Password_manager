@@ -1,5 +1,5 @@
 from module1 import func
-from module2 import process
+from module2 import process, web
 import getpass
 from colorama import Fore, Style
 import pyfiglet
@@ -11,7 +11,7 @@ print("********* Welcome to Password Manager *********")
 password = ''
 logged_in = False
 username = ''
-session_token = ''  # Initialize session token variable
+session_token = ''  
 
 while True:
 
@@ -19,6 +19,7 @@ while True:
         user_input = input(
             f"{Fore.BLUE}{Style.BRIGHT}Options: \n"
             "Web-Based (Requires Database):\n"
+            "'O' GUI(Open in browser)\n" 
             "'A' Register\n"
             "'L' to login\n"
             "\n"
@@ -67,6 +68,8 @@ while True:
             register = process.user_register(first_name, last_name, username, password)
             print(register)
 
+        elif user_input == 'o': #webbrowser
+            web.web_browser()
 
         elif user_input == 'l': #login
             username = input("Enter username: ")
