@@ -36,18 +36,21 @@ body {
 }
 
 .navbar .login-button {
-    color: white;
-    background-color: #006ea5;
+    background-color: #095e83;
     border: none;
     padding: 10px 20px;
     margin-left: 10px; 
     cursor: pointer;
-    font-family: 'Poppins';
+}
+
+.login-button a {
+    text-decoration: none;
+    color: white;
 }
 
 .navbar .login-button:hover {
     color: #0d002f;
-    background-color: #757879;
+    background-color: #034055;
 
 } 
 
