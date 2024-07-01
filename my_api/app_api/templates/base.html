@@ -16,14 +16,21 @@
     <div class="navlinks">
         <a href="{% url 'home' %}">Home</a>
         <a href="#about">About</a>
-        {% if user.is_authenticated %}
-        <a href="#services">Account</a>
-        {% endif %}
         <a href="#contact">Contact</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'account' user.id %}">Account</a>
+        {% endif %}
     </div>
+    {% if not request.user.is_authenticated%}
     <button class="login-button">
         <a href="{% url 'register' %}">Signup</a>
     </button>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <button class="login-button">
+        <a href="{% url 'logout' %}">Logout</a>
+    </button>
+    {% endif %}
 </nav>
 {% block content %}
 {% endblock %}
