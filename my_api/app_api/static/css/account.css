@@ -1,0 +1,209 @@
+.account-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: transparent;
+   
+}
+
+.account-container .account-message {
+    color: #4fedff;
+}
+
+.account-title {
+    color: #bdbdbd;
+}
+
+.user-info {
+    background-color: transparent;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
+
+.user-table {
+    color: white;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-table th, .user-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-table th {
+    width: 30%;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.user-table td {
+    width: 70%;
+}
+
+.account-content {
+    margin-top: 20px;
+}
+
+.modal-toggle {
+    display: none; 
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: none; 
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 60%;
+    max-width: 400px;
+    position: relative;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.add-data-btn {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid white;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+}
+
+.add-data-btn:hover {
+    background-color: #0056b3;
+}
+
+.modal-toggle:checked + .modal {
+    display: flex; 
+}
+
+form {
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+form button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #04284e;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button[type="submit"]:hover {
+    background-color:  #0056b3;
+}
+
+.info-table {
+    margin-top: 30px;
+}
+
+.store-title{
+    color: #bdbdbd;
+}
+
+.stored-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.stored-data-table th, .stored-data-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.stored-data-table th {
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+}
+
+.stored-data-table td {
+    text-align: left;
+}
+
+.password-cell {
+    position: relative;
+}
+
+.toggle-password {
+    display: none;
+}
+
+.toggle-label {
+    cursor: pointer;
+    color: #00e9f1;
+}
+
+
+.password-mask {
+    display: inline;
+}
+
+.password-text {
+    display: none;
+}
+
+.toggle-password:checked ~ .toggle-label:after {
+    content: "Hide"; 
+}
+
+.toggle-password:checked ~ .password-mask {
+    display: none; 
+}
+
+.toggle-password:checked ~ .password-text {
+    display: inline;
+}
+
+.toggle-password:not(:checked) ~ .toggle-label:after {
+    content: "View";
+}
+
+.table-tr{
+    color: white;
+}
+
+.stored-data-table tbody tr:nth-child(even) {
+    
+    background-color: transparent;
+}

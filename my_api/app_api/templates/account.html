@@ -1,0 +1,79 @@
+{% load static %}
+{% include "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}">
+<div class="account-container">
+    <h1 class="account-title">MY ACCOUNT:</h1>
+    {% for message in messages %}
+    <span class="account-message">{{ message }}</span>
+    {% endfor %}
+    <div class="user-info">
+        <table class="user-table">
+            <tr>
+                <th>Username:</th>
+                <td>{{ user_data.username }}</td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td>{{ user_data.email }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="account-content">
+        <label for="modal-toggle" class="add-data-btn">Add Data</label>
+        <input type="checkbox" id="modal-toggle" class="modal-toggle">
+        <div class="modal">
+            <div class="modal-content">
+                <label for="modal-toggle" class="close">&times;</label>
+                <h2>Add Data</h2>
+                <form id="addDataForm" method="POST" action="{% url 'add_data' user.id %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="site_input">Site Name or URL:</label>
+                        <input type="text" id="site_input" name="site_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pass_input">Password:</label>
+                        <input type="text" id="pass_input" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="note_input">Email or Username:</label>
+                        <input type="text" id="note_input" name="note">
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="info-table">
+        <h2 class="store-title">VAULT INFO:</h2>
+        <table class="stored-data-table">
+            <thead>
+                <tr>
+                    <th>Site Name or URL</th>
+                    <th>Password</th>
+                    <th>Username or Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr class="table-tr">
+                    <td>{{ item.site_name }}</td>
+                    <td class="password-cell">
+                        <input type="checkbox" id="showPassword{{ forloop.counter }}" class="toggle-password">
+                        <label for="showPassword{{ forloop.counter }}" class="toggle-label"></label>
+                        <span class="password-text">{{ item.password }}</span>
+                    </td>              
+                    <td>{{ item.note }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3" style="color: white;">No data available. Please add.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
