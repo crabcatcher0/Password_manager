@@ -1,4 +1,4 @@
-![Home](home.png)
+![Home](/my_api/app_api/staic/img/home.png)
 
 # Password Manager
 CLI based application. Integrated web-based(Django) feature for data integrity, User can directly control from command line as well use the web interface. 
