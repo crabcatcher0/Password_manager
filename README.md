@@ -1,11 +1,14 @@
+![Home](home.png)
+
 # Password Manager
-CLI based application. Integrated web-based feature for data integrity, User can directly control from command line.
+CLI based application. Integrated web-based(Django) feature for data integrity, User can directly control from command line as well use the web interface. 
 
 ## Features
 
 ### Online:
 - **Register**: User can create a account and signin.
 - **Browse Account**: Can view account and data.
+- **Web Based**: User can now directly browse through web interface. 
 
 ### Offline:
 - **Password Generation**: Generate strong passwords with customizable length requirements.
@@ -15,8 +18,8 @@ CLI based application. Integrated web-based feature for data integrity, User can
 ## Installation
 
 ### To install:
-Start XAMPP and create a database.
-
+Create a MySQL database with and change the name in settings.py.
+For CLI use XAMPP.
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/crabcatcher0/Password_manager
@@ -27,6 +30,7 @@ Start XAMPP and create a database.
    pip install -r requirements.txt
    
 3. **Run**:
+   Run the django server and
    ```bash
    cd src
    python3 main.py
@@ -34,6 +38,7 @@ Start XAMPP and create a database.
 ## Usage
 ## Commands
 ### Online:
+- **Open in browser (O)**: Opens a web interface in browser
 - **Register (A)**: Signup
 - **Login (L)**: Login
 - **View Account Info (V)**: Display profile's information
