@@ -19,7 +19,6 @@ def home(request):
     return render(request, 'home.html')
 
 
-
 def generate_pass(request):
     if request.method == 'POST':
         data = func.create_pass(15)
@@ -57,7 +56,6 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Registration success. Please login.')
             return redirect('login')
         else:
             form = RegisterForm()

@@ -17,12 +17,11 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+from .secrete import SECRET_KEY
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-olx1gelbmq^17*%y5c9@z%pxlmd3-*l0o2+3+@*6skn-7^*hru'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

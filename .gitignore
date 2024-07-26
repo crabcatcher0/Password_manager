@@ -8,7 +8,7 @@ __pycache__
 
 # Ignore environment-specific settings
 .env
-
+secrete.py
 # Ignore system-specific files
 .DS_Store
 Thumbs.db
